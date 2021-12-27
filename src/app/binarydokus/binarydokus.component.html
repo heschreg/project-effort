@@ -1,0 +1,26 @@
+<mat-tab-group *ngIf="!ongoingTraining">
+  <mat-tab label="Auswahl des anzuzeigenden Dokuments">
+    <!-- Man lauscht hier auf das Ereignis "trainingStart" -->
+    <!-- trainingStart ist das neu erzeugte Event in der TS-Klasse der Komponente "new-training"
+          ongoingTraining ist eine boolean Variable in  der Komponente "new-training" -->
+    <app-showdokus (trainingStart)="ongoingTraining=true"></app-showdokus>
+  </mat-tab>
+
+  <mat-tab label="Past Exercises">
+    <app-past-training></app-past-training>
+  </mat-tab>
+</mat-tab-group>
+
+<!-- Man lauscht hier auf das Ereignis "trainingExit", falls dieses erkannt wird, so wird ongoingTraining
+     auf false gesetzt und es wird ab hier nix mehr asugegeben -->
+<!-- im Verlauf des Turotrials wird jetzt andere Methode eingeführt, um das Training zu beenden (training.service.ts) -->
+<!--
+<app-current-training *ngIf="ongoingTraining" (trainingExit)="ongoingTraining=false"></app-current-training>
+-->
+
+<mat-card fxFlex.xs=100% fxFlex="400px"  *ngIf="ongoingTraining">
+  <mat-card-title fxLayoutAlign="center">Time to start a workout</mat-card-title>
+  <mat-card-content fxLayoutAlign="center">
+    <app-current-training></app-current-training>
+</mat-card-content>
+

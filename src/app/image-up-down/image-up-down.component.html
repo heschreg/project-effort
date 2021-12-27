@@ -1,0 +1,113 @@
+<div class="container row">
+      <div class="col-md-12">
+          <h1>Upload Image Dateien</h1>
+      </div>
+</div>
+
+<div class="container row">
+  <div class="col-md-6">
+    <input type="file" (change)="onFileChangedImg($event)">
+  </div>
+  <div class="col-md-6">
+    <input type="button" (click)="onUploadImg()" value="upload">
+  </div>
+</div>
+
+<hr />
+
+<!-- *************************************************************************************************************** -->
+
+
+<div class="container row">
+  <div class="col-md-12">
+      <h1>Upload Pdf-Dateien</h1>
+  </div>
+</div>
+
+<div class="container row">
+<div class="col-md-6">
+<input type="file" (change)="onFileChangedPdf($event)">
+</div>
+<div class="col-md-6">
+<input type="button" (click)="onUploadPdf()" value="upload">
+</div>
+</div>
+
+<hr />
+
+<!-- *************************************************************************************************************** -->
+<hr />
+
+<!-- Darstellen eines Bildes, das als Binary in eine MySQL-DB abgelegt ist -->
+
+<div class="container row">
+  <div class="col-md-12">
+      <h1>Download Image Dateien</h1>
+  </div>
+</div>
+
+<div class="container row">
+  <div class="col-md-12">
+    <div *ngIf=message>{{message}}</div>
+  </div>
+</div>
+
+<div class="container row">
+  <div class="col-md-6">
+    <input type="text" class="form-control" id="name" placeholder="image-Datei" [(ngModel)]="imageName" name="name" />
+  </div>
+  <div class="col-md-6">
+     <input type="button" (click)="getImage()" value="Get Image">
+  </div>
+</div>
+
+<!-- *************************************************************************************************************** -->
+<hr />
+
+<div class="container row">
+  <div class="col-md-12">
+      <h1>Download Pdf Dateien</h1>
+  </div>
+</div>
+
+<div class="container row">
+  <div class="col-md-12">
+    <div *ngIf=retrievedImage>
+      <img [src]="retrievedImage">
+    </div>
+  </div>
+</div>
+
+<hr />
+
+<!-- Darstellen eines pdf-Dolumentes, das als Binary in eine MySQL-DB abgelegt ist -->
+
+<div class="container row">
+  <div class="col-md-12">
+    <div *ngIf=message>{{message}}</div>
+  </div>
+</div>
+
+<div class="container row">
+  <div class="col-md-6">
+    <input type="text" class="form-control" id="pdfdatei" placeholder="pdf-Datei" [(ngModel)]="pdfName"
+        name="name" />
+  </div>
+  <div class="col-md-6">
+     <!-- In der Praxis kommt das aufgrund der Auswahl eines Dokumentes aus einer Listbox oder Datatable -->
+     <input type="button" (click)="getPdfUrl('0d9691ee-c96c-4e35-8837-a787b459da2c')" value="Get PDF">
+  </div>
+</div>
+
+<!-- so schaut beispielhaft eine fileUrl aus -->
+<!--"'http://localhost:8081/image/binaryfile/0d9691ee-c96c-4e35-8837-a787b459da2c'" -->
+<!--
+<ngx-extended-pdf-viewer
+      [src]="fileUrl"
+      [height]="'90vh'"
+      [useBrowserLocale]="true"
+> </ngx-extended-pdf-viewer>
+-->
+
+
+
